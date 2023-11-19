@@ -1,21 +1,71 @@
-﻿
-string name = "Maciej";
-char sex = 'm';
-int age = 70;
+﻿int number = 9999999;
 
-if ( sex  == 'k' && age < 30 )
+string numberInString = number.ToString();
+char[] letters = numberInString.ToArray();
+
+int counter0 = 0;
+int counter1 = 0;
+int counter2 = 0;
+int counter3 = 0;
+int counter4 = 0;
+int counter5 = 0;
+int counter6 = 0;
+int counter7 = 0;
+int counter8 = 0;
+int counter9 = 0;
+
+foreach(char letter in letters)
+{
+    if (letter == '0')
     {
-        Console.WriteLine ("Kobieta poniżej 30 lat ");
+        counter0++;
     }
-else if (name == "Ewa" && age == 33)
+    else if (letter == '1')
     {
-        Console.WriteLine("Ewa ,lat 33 ");
+        counter1++;
     }
-else if ( sex == 'm' && age < 18)
+    else if (letter == '2')
     {
-        Console.WriteLine("Niepełnoletni mężczyżna o imieniu "+ name);
+        counter2++;
     }
-else
+    else if (letter == '3')
     {
-        Console.WriteLine("ktos inny, osoba o imieniu "+ name + " i wieku " +age);
+        counter3++;
     }
+    else if (letter == '4')
+    {
+        counter4++;
+    }
+    else if (letter == '5')
+    {
+        counter5++;
+    }
+    else if (letter == '6')
+    {
+        counter6++;
+    }
+    else if (letter == '7')
+    {
+        counter7++;
+    }
+    else if (letter == '8')
+    {
+        counter8++;
+    }
+    else if (letter == '9')
+    {
+        counter9++;
+    }
+}
+
+Console.WriteLine("Wynik dla liczby: "+ number);
+Console.WriteLine("0 => "+ counter0);
+Console.WriteLine("1 => "+ counter1);
+Console.WriteLine("2 => "+ counter2);
+Console.WriteLine("3 => "+ counter3);
+Console.WriteLine("4 => "+ counter4);
+Console.WriteLine("5 => "+ counter5);
+Console.WriteLine("6 => "+ counter6);
+Console.WriteLine("7 => "+ counter7);
+Console.WriteLine("8 => "+ counter8);
+Console.WriteLine("9 => "+ counter9);
