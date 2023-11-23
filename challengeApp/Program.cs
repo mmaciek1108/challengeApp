@@ -1,9 +1,14 @@
-﻿using CSzarpKurs;
+﻿using System;
+using CSzarpKurs;
 
 var employee = new Employee("Mocarny", "Stefan", 19);
-employee.AddGrade(2);
-employee.AddGrade(3);
+employee.AddGrade("3000");
+employee.AddGrade("400");
 employee.AddGrade(4);
+employee.AddGrade('3');
+employee.AddGrade(Math.PI);
+employee.AddGrade('m');
+employee.AddGrade("Ada");
 
 var statistics = employee.GetStatistics();
 

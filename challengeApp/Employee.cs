@@ -20,7 +20,46 @@ namespace CSzarpKurs
 
         public void AddGrade(float grade)
         {
+            if (grade >=0 && grade <=200)
+            {
             this.grades.Add(grade);
+            }
+            else
+            {
+                Console.WriteLine($"nieprawidłowe dane - liczba: {grade} nie miesci sie w przedziale 0-200");
+            }
+        }
+
+        public void AddGrade(string grade)
+        {   
+            if (float.TryParse(grade, out float result))
+            {
+                this.AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine($"Wpisany znak: {grade} - nie da się przekonwertować na liczbę");
+            }
+        }
+
+        public void AddGrade(double grade)
+        {   
+           float gradeFloat = (float)grade;
+           this.AddGrade(gradeFloat);
+        }
+ 
+        public void AddGrade(char grade)
+        {   
+            double numericValue = Char.GetNumericValue(grade);
+            if (numericValue >= 0)
+           {
+                float gradeFloat = (float)numericValue;
+                this.AddGrade(gradeFloat);
+           }
+           else
+           {
+            Console.WriteLine($"nieprawidłowy znak: {grade}");
+           }
         }
 
         public Statistics GetStatistics()
