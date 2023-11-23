@@ -1,9 +1,11 @@
 
+using challengeApp;
+
 namespace CSzarpKurs
 {
     public class Employee
     {
-        private List<int> score = new List<int>();
+        private List<float> grades = new List<float>();
 
         public Employee(string name, string surname, int age)
         {
@@ -16,16 +18,28 @@ namespace CSzarpKurs
         public string Surname { get; private set; }
         public int Age { get; private set; }
 
-        public int Result
+        public void AddGrade(float grade)
         {
-            get
-            {
-                return this.score.Sum();
-            }
+            this.grades.Add(grade);
         }
-    public void AddScore(int number)
-    {
-        this.score.Add(number);
-    }
+
+        public Statistics GetStatistics()
+        {
+            var statistics = new Statistics();
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+
+            foreach(var grade in this.grades) 
+            {
+                statistics.Max = Math.Max(statistics.Max, grade);
+                statistics.Min = Math.Min(statistics.Min, grade);
+                statistics.Average += grade;
+            }
+            
+            statistics.Average /= this.grades.Count;
+
+            return statistics;
+        }
     }
 }

@@ -1,47 +1,12 @@
-﻿
-using CSzarpKurs;
+﻿using CSzarpKurs;
 
-Employee user1 = new("Maciej", "Maciej", 38);
-Employee user2 = new("Beata", "Marek", 12);
-Employee user3 = new("Stefan", "Marek", 99);
+var employee = new Employee("Mocarny", "Stefan", 19);
+employee.AddGrade(2);
+employee.AddGrade(3);
+employee.AddGrade(4);
 
-user1.AddScore(1);
-user1.AddScore(1);
-user1.AddScore(1);
-user1.AddScore(2);
-user1.AddScore(1); 
+var statistics = employee.GetStatistics();
 
-user2.AddScore(9);
-user2.AddScore(9);
-user2.AddScore(9);
-user2.AddScore(5);
-user2.AddScore(5);
-
-user3.AddScore(10);
-user3.AddScore(10);
-user3.AddScore(10);
-user3.AddScore(10);
-user3.AddScore(1);
-
-List<Employee> users = new List<Employee>()
-{
-    user1, user2, user3
-};
-
-int maxResult = -1;
-Employee userWithMaxResult = null;
-
-foreach(var user in users)
-{
-    if(user.Result > maxResult)
-    {
-        maxResult = user.Result;
-        userWithMaxResult = user;
-    }
-}
-
-Console.WriteLine("Pracownik z największą liczbą punktów: ");
-Console.WriteLine("Imię: " + userWithMaxResult.Name);
-Console.WriteLine("Nazwisko: " + userWithMaxResult.Surname);
-Console.WriteLine("Wiek: " + userWithMaxResult.Age);
-Console.WriteLine("Liczba punktów: " + userWithMaxResult.Result);
+ Console.WriteLine($"Averange: {statistics.Average:N2}");
+ Console.WriteLine($"Min: {statistics.Min}");
+ Console.WriteLine($"Max: {statistics.Max}");

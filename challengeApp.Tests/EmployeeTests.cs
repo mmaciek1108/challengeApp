@@ -4,34 +4,62 @@ namespace challengeApp.Tests;
 
 public class Tests
 {
+    
     [Test]
-    public void WhenUserCollectTwoScores_ShouldCorrectResult()
+    public void WhenStatisticsCalled_ShouldReturnMax()
+    {
+        
+        //arrange
+        var user = new Employee("Klara", "Szybka", 14); 
+        user.AddGrade(6);
+        user.AddGrade(9);
+        user.AddGrade(3);
+
+        var statistics = user.GetStatistics();
+
+
+        //act
+        var min = statistics.Min;
+
+
+        //assert
+        Assert.AreEqual(3, min);
+    }
+    public void WhenStatisticsCalled_ShouldReturnMin()
     {
         //arrange
         var user = new Employee("Klara", "Szybka", 14); 
-        user.AddScore(6);
-        user.AddScore(9);
+        user.AddGrade(6);
+        user.AddGrade(9);
+        user.AddGrade(3);
+
+        var statistics = user.GetStatistics();
+
 
         //act
-        var result = user.Result;
+        var max = statistics.Max;
+
 
         //assert
-        Assert.AreEqual(15, result);
+        Assert.AreEqual(9, max);
     }
 
-    [Test]
-    public void WhenUserCollecNegativeScores_ShouldCorrectResult()
+    public void WhenStatisticsCalled_ShouldReturnAverege()
     {
         //arrange
-        var user = new Employee("Andrzej", "Blacha", 39); 
-        user.AddScore(-6);
-        user.AddScore(-9);
-        
+        var user = new Employee("Klara", "Szybka", 14); 
+        user.AddGrade(6);
+        user.AddGrade(9);
+        user.AddGrade(3);
+
+        var statistics = user.GetStatistics();
+
 
         //act
-        var result = user.Result;
+        var ave = statistics.Average;
+
 
         //assert
-        Assert.AreEqual(-15, result);
+        Assert.AreEqual(6 , ave);
     }
 }

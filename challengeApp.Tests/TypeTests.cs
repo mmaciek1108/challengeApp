@@ -59,8 +59,5 @@ namespace challengeApp.Tests
             //assert
             Assert.AreEqual(numberFloat1, numberFloat2);
         }
-
-
-
     }
 }
