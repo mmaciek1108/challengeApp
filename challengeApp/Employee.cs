@@ -23,13 +23,13 @@ namespace CSzarpKurs
 
         public void AddGrade(float grade)
         {
-            if (grade >= 0 && grade <= 200)
+            if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
             }
             else
             {
-                Console.WriteLine($"nieprawidłowe dane - liczba: {grade} nie miesci sie w przedziale 0-200");
+                throw new Exception($"nieprawidłowe dane - liczba: {grade} nie miesci sie w przedziale 0-100");
             }
         }
 
@@ -41,7 +41,7 @@ namespace CSzarpKurs
             }
             else
             {
-                Console.WriteLine($"Wpisany znak: {grade} - nie da się przekonwertować na liczbę");
+                throw new Exception($"Wpisany znak: {grade} - nie da się przekonwertować na liczbę");
             }
         }
 
@@ -76,8 +76,7 @@ namespace CSzarpKurs
                     this.grades.Add(20);
                     break;
                 default:
-                    Console.WriteLine("nie właściwe wprowadzony znak");
-                    break;
+                    throw new Exception("nie właściwe wprowadzony znak");
             }
         }
 

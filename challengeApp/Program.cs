@@ -1,8 +1,8 @@
 ﻿
 using CSzarpKurs;
 
-Console.WriteLine("Witamy w programie 'OceńToRajd' do oceny Pracowników");
-Console.WriteLine("=======================================================");
+Console.WriteLine("Witamy w programie 'OceńToRajd' do oceny pracowników.");
+Console.WriteLine("=====================================================");
 Console.WriteLine();
 
 var employee = new Employee();
@@ -15,8 +15,16 @@ while (true)
     {
         break;
     }
-    employee.AddGrade(input);
+    try
+    {
+        employee.AddGrade(input);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"cos poszło nie tak: {e.Message}");
+    }
 }
+
 
 var statistics = employee.GetStatistics();
 
