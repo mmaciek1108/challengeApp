@@ -5,7 +5,7 @@ Console.WriteLine("Witamy w programie 'OceńToRajd' do oceny pracowników.");
 Console.WriteLine("=====================================================");
 Console.WriteLine();
 
-var employee = new Employee();
+var employee = new Employee("MM", "mm", 35, 'M');
 
 while (true)
 {

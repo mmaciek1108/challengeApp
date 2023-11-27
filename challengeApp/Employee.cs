@@ -2,24 +2,14 @@ using challengeApp;
 
 namespace CSzarpKurs
 {
-    public class Employee
+    public class Employee : Person
     {
         private List<float> grades = new List<float>();
 
-        public Employee()
+        public Employee(string name, string surname, int age, char sex) : base(name, surname, age, sex)
         {
 
         }
-        public Employee(string name, string surname, int age)
-        {
-            this.Name = name;
-            this.Surname = surname;
-            this.Age = age;
-        }
-
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        public int Age { get; private set; }
 
         public void AddGrade(float grade)
         {
@@ -37,7 +27,11 @@ namespace CSzarpKurs
         {
             if (float.TryParse(grade, out float result))
             {
-                this.AddGrade(result);
+                AddGrade(result);
+            }
+            else if (char.TryParse(grade, out char resultChar))
+            {
+                AddGrade(resultChar);
             }
             else
             {
@@ -57,23 +51,23 @@ namespace CSzarpKurs
             {
                 case 'A':
                 case 'a':
-                    this.grades.Add(100);
+                    AddGrade(100);
                     break;
                 case 'B':
                 case 'b':
-                    this.grades.Add(80);
+                    AddGrade(80);
                     break;
                 case 'C':
                 case 'c':
-                    this.grades.Add(60);
+                    AddGrade(60);
                     break;
                 case 'D':
                 case 'd':
-                    this.grades.Add(40);
+                    AddGrade(40);
                     break;
                 case 'E':
                 case 'e':
-                    this.grades.Add(20);
+                    AddGrade(20);
                     break;
                 default:
                     throw new Exception("nie właściwe wprowadzony znak");
