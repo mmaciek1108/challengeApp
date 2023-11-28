@@ -1,6 +1,4 @@
 
-using System.Dynamic;
-
 namespace challengeApp
 {
     public interface IEmployee

@@ -32,24 +32,24 @@ namespace challengeApp
             float points;
             char modifier = grade.Length > 1 ? grade[1] : ' ';
 
-            switch (grade)
+            switch (grade[0])
             {
-                case "6":
+                case '6':
                     points = 100;
                     break;
-                case "5":
+                case '5':
                     points = 80;
                     break;
-                case "4":
+                case '4':
                     points = 60;
                     break;
-                case "3":
+                case '3':
                     points = 40;
                     break;
-                case "2":
+                case '2':
                     points = 20;
                     break;
-                case "1":
+                case '1':
                     points = 0;
                     break;
                 default:
