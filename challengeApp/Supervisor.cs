@@ -3,28 +3,96 @@ namespace challengeApp
 {
     public class Supervisor : IEmployee
     {
-        public string Name => throw new NotImplementedException();
+        public Supervisor(string name, string surname)
+        {
+            this.Name = name;
+            this.Surname = surname;
+        }
+        public string Name { get; set; }
+        public string Surname { get; set; }
 
-        public string Surname => throw new NotImplementedException();
 
-        public int Age => throw new NotImplementedException();
+        private List<float> grades = new List<float>();
 
-        public char Sex => throw new NotImplementedException();
 
         public void AddGrade(float grade)
         {
-            throw new NotImplementedException();
+            if (grade >= 0 && grade <= 100)
+            {
+                this.grades.Add(grade);
+            }
+            else
+            {
+                throw new Exception($"nieprawidłowe dane - liczba: {grade} nie miesci sie w przedziale 0-100");
+            }
         }
 
 
         public void AddGrade(char grade)
         {
-            throw new NotImplementedException();
+            switch (grade)
+            {
+                case 'A':
+                case 'a':
+                    AddGrade(6);
+                    break;
+                case 'B':
+                case 'b':
+                    AddGrade(5);
+                    break;
+                case 'C':
+                case 'c':
+                    AddGrade(4);
+                    break;
+                case 'D':
+                case 'd':
+                    AddGrade(3);
+                    break;
+                case 'E':
+                case 'e':
+                    AddGrade(2);
+                    break;
+                default:
+                    throw new Exception("nie właściwe wprowadzony znak");
+            }
         }
 
         public Statistics GetStatistics()
         {
-            throw new NotImplementedException();
+            var statistics = new Statistics();
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+
+            foreach (var grade in this.grades)
+            {
+                statistics.Max = Math.Max(statistics.Max, grade);
+                statistics.Min = Math.Min(statistics.Min, grade);
+                statistics.Average += grade;
+            }
+
+            statistics.Average /= this.grades.Count;
+
+            switch (statistics.Average)
+            {
+                case var average when average >= 80:
+                    statistics.AverageLetter = 'A';
+                    break;
+                case var average when average >= 60:
+                    statistics.AverageLetter = 'B';
+                    break;
+                case var average when average >= 40:
+                    statistics.AverageLetter = 'C';
+                    break;
+                case var average when average >= 20:
+                    statistics.AverageLetter = 'D';
+                    break;
+                default:
+                    statistics.AverageLetter = 'E';
+                    break;
+
+            }
+            return statistics;
         }
         public void AddGrade(string grade)
         {

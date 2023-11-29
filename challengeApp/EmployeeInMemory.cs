@@ -1,25 +1,15 @@
-using challengeApp;
 
-namespace CSzarpKurs
+namespace challengeApp
 {
-    public class Employee : IEmployee
+    public class EmployeeInMemory : EmployeeBase
     {
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname, int age, char sex)
+        public EmployeeInMemory(string name, string surname) : base(name, surname)
         {
-            this.Name = name;
-            this.Surname = surname;
-            this.Age = age;
-            this.Sex = sex;
         }
 
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        public int Age { get; private set; }
-        public char Sex { get; private set; }
-
-        public void AddGrade(float grade)
+        public override void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
@@ -31,29 +21,7 @@ namespace CSzarpKurs
             }
         }
 
-        public void AddGrade(string grade)
-        {
-            if (float.TryParse(grade, out float result))
-            {
-                AddGrade(result);
-            }
-            else if (char.TryParse(grade, out char resultChar))
-            {
-                AddGrade(resultChar);
-            }
-            else
-            {
-                throw new Exception($"Wpisany znak: {grade} - nie da się przekonwertować na liczbę");
-            }
-        }
-
-        public void AddGrade(double grade)
-        {
-            float gradeFloat = (float)grade;
-            this.AddGrade(gradeFloat);
-        }
-
-        public void AddGrade(char grade)
+        public override void AddGrade(char grade)
         {
             switch (grade)
             {
@@ -82,7 +50,23 @@ namespace CSzarpKurs
             }
         }
 
-        public Statistics GetStatistics()
+        public override void AddGrade(string grade)
+        {
+            if (float.TryParse(grade, out float result))
+            {
+                AddGrade(result);
+            }
+            else if (char.TryParse(grade, out char resultChar))
+            {
+                AddGrade(resultChar);
+            }
+            else
+            {
+                throw new Exception($"Wpisany znak: {grade} - nie da się przekonwertować na liczbę");
+            }
+        }
+
+        public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
             statistics.Average = 0;
@@ -118,11 +102,6 @@ namespace CSzarpKurs
 
             }
             return statistics;
-        }
-
-        internal void AddGrade(object input)
-        {
-            throw new NotImplementedException();
         }
     }
 }
