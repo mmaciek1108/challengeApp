@@ -8,6 +8,8 @@ namespace challengeApp
             this.Name = name;
             this.Surname = surname;
         }
+        public delegate void GradeAddedDeledate(object sender, EventArgs args);
+        public abstract event GradeAddedDeledate GradeAdded;
         public string Name { get; private set; }
         public string Surname { get; private set; }
 

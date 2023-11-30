@@ -5,6 +5,8 @@ namespace challengeApp
     {
         private const string fileName = "grades.txt";
 
+        public override event GradeAddedDeledate GradeAdded;
+
         public EmployeeInFile(string name, string surname) : base(name, surname)
         {
         }

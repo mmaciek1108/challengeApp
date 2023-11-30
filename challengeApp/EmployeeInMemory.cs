@@ -3,10 +3,13 @@ namespace challengeApp
 {
     public class EmployeeInMemory : EmployeeBase
     {
+        public override event GradeAddedDeledate GradeAdded;
+
         private List<float> grades = new List<float>();
 
         public EmployeeInMemory(string name, string surname) : base(name, surname)
         {
+
         }
 
         public override void AddGrade(float grade)
@@ -14,6 +17,11 @@ namespace challengeApp
             if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
+
+                if (GradeAdded is not null) // zamiast !=
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
