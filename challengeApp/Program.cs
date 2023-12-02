@@ -6,7 +6,7 @@ Console.WriteLine("Witamy w programie 'OceńToRajd' do oceny pracowników.");
 Console.WriteLine("=====================================================");
 Console.WriteLine();
 
-var employee = new EmployeeInMemory("mm", "mm");
+var employee = new EmployeeInFile("mm", "mm");
 employee.GradeAdded += EmployeeGradeAdded;
 
 void EmployeeGradeAdded(object sender, EventArgs args)
